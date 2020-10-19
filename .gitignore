@@ -1,3 +1,5 @@
+target/
+Cargo.lock
 movable.sed
 *.class
 *.exe
