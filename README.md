@@ -1,6 +1,8 @@
 # id0calc
 ID0 calculator written in many languages
 
+- [C](id0.c)
+- [C++](id0.cpp)
 - [Go](id0.go)
 - [Java](id0.java)
 - [JavaScript](id0.js)
