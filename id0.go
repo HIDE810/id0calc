@@ -12,7 +12,7 @@ func main() {
 
 	var id0 string
 	var id0_array [4]uint32
-	var buf = make([]byte, 0x120)
+	var buf = make([]byte, 16)
 
 	fp, err := os.Open("movable.sed")
 	if err != nil {
@@ -20,10 +20,11 @@ func main() {
 	}
 	defer fp.Close()
 
+	fp.Seek(0x110, 0)
 	fp.Read(buf)
 
-	hash := sha256.Sum256(buf[0x110:0x120])
-	binary.Read(bytes.NewBuffer(hash[:16]), binary.LittleEndian, &id0_array)
+	hash := sha256.Sum256(buf)
+	binary.Read(bytes.NewReader(hash[:16]), binary.LittleEndian, &id0_array)
 
 	for _, v := range id0_array {
 		id0 += fmt.Sprintf("%X", v)
